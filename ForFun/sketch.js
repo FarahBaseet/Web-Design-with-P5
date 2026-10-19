@@ -5,7 +5,7 @@ var speedy = [];
 var speedx = [];
 
 function setup(){
-    createCanvas(400, 400);
+    createCanvas(windowWidth, windowHeight);
     colorMode(HSB);
     for (var i = 0; i < 10; i++){
         xValue[i] = random(25, width-25);
