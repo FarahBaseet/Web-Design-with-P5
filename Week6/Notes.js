@@ -31,6 +31,7 @@ series of exercises. best way to practice is looking at slides, trying examples 
 
 
 - Simple Drawing Animation
+--- ellipse()//x position,  y position, length, width?
 - Maths operators
 - Variables
 --- width and height are built in variables that give you the width and height of the canvas
