@@ -1,26 +1,49 @@
-var video;
+var video;//STEP 1
+
+let gridSize = 10;//adjust this for number of circles to change
 
 function setup() {
-    createCanvas(400, 400);
-    video = createCapture(VIDEO);
-    video.hide();
+    createCanvas(640, 480);
+    video = createCapture(VIDEO);//STEP 2
+
+    video.size(width/gridSize, height/gridSize);
+    video.hide();//this is ur real, baby small actual video. if you comment this out it'll show up
+
+    rectMode(CENTER);
+    //frameRate
     describe("My super cool site from Class 9!");
 
 }
 
 function draw() {
-    background(220);
-    image(video, 0, 0, width, height);
+    //background(220);
+    video.loadPixels();//huge array holdding RGBalpha (opacity) values. all of the data from the camera (constantly updating)
+    //[r1,g1,b1,opacity1,r2,b2,g2,opacity2...........]
+    
+    //image(video, 0, 0, width, height);
 
+    
+    for (var y = 0; y<video.height;y++) {
+        for (var x = 0; x<video.width; x++) {
+      
+        let index = (x+y*video.width) * 4; // Multiplied by 4 since each pixel takes up 4 spots
+      
+        let r = video.pixels[index]; //taking pixel from massive array
+        let g = video.pixels[index+1];
+        let b = video.pixels[index+2];
+      
+      
+        fill(r,g,b);
+        noStroke();
+      
+        ellipse(x*gridSize, y*gridSize, gridSize, gridSize );
+        }
+    }
 }
 
 
 
 /**notes:
- * today's topic is OBJECT ORIENTED PROGRAMMING
- *
- * not covered in class, will not be assessed but helpful: multiple sketches on html (slides 2 - 11 in week 6) 
- * this is how you can have multiple sketches on a site
+ * today's topic is 
  * 
- * array splice() to remove/replace specific value, push() to ad values, pop() to remove last value
 */
